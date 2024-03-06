@@ -75,9 +75,10 @@ h2 {
     font-size: 2em;
 }
 
-h3 {
+.section-content h3 {
     font-size: 1.5em;
-    text-decoration: underline;
+    text-decoration: none;
+    counter-increment: titleList;
 }
 
 pre {
@@ -88,4 +89,24 @@ pre {
 .hero {
     background: linear-gradient(to top, var(--black) 10px, transparent), url("../images/pattern.png");
     height: 350px;
+}
+
+.section-content {
+    counter-reset: titleList;
+}
+
+.section-content h3::before {
+    content: counter(titleList)".";
+}
+
+.section-content h3::after {
+    content: "";
+    width: 32px;
+    height: 4px;
+    background: var(--white10);
+    display: inline-block;
+}
+
+::selection {
+    background: var(--white20);
 }
